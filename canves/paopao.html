@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>canvas泡泡</title>
+		<style type="text/css">
+			#mycanvas{
+				position:relative;
+				width: 100%;
+				height: 100%;
+				border: 1px solid lightskyblue;
+				opacity:1.0;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="mycanvas"></canvas>
+		<script type="text/javascript">
+			var canvas=document.getElementById("mycanvas");
+			var cxt=canvas.getContext("2d");
+			function Circle()
+			{
+				this.r=Math.floor(Math.random()*256);
+				this.g=Math.floor(Math.random()*256);
+				this.b=Math.floor(Math.random()*256);
+				this.x=Math.random()*300;
+				this.y=20;
+				this.r2=Math.random()*10;
+				this.paint=function()
+				{
+					cxt.beginPath();
+					cxt.fillStyle="rgb("+this.r+","+this.g+","+this.b+")";
+					cxt.globalAlpha=0.9;
+					cxt.arc(this.x,this.y,this.r2,0,Math.PI*2,false);
+					cxt.closePath();
+					cxt.fill();
+				};
+				this.move=function()
+				{
+					this.y++;
+				}
+			}
+			var circles=[];//创建数组
+			function createCircle()
+			{
+				var circle = new Circle();//构造调用函数circle
+				circles.push(circle);//将绘制的图形添加到数组
+			}
+			function paintCircle()
+			{
+				for(var i=0;i<circles.length;i++)
+				{
+					circles[i].paint();
+					console.log("绘制："+i);
+				}
+			}
+			function moveCircle()
+			{
+				for(var i=0;i<circles.length;i++)
+				{
+					circles[i].move();
+				}
+			}
+			var img = new Image();//构造调用函数img
+			img.src="img/2.ipg";
+			
+		    var time=0;
+		    var loop=setInterval(
+		    	function(){
+		    		cxt.drawImage(img,0,0,320,180);
+		    		time++;
+		    		if(time%10==0)
+		    		{
+		    			createCircle();
+		    		}
+		    		paintCircle();
+		    		moveCircle();
+		    	},30);
+		</script>
+	</body>
+</html>

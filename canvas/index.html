@@ -1,0 +1,166 @@
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+<title>Title</title>
+ <style>
+ 	#canvas{
+ 		border:5px solid yellow;
+ 		width:100%;
+ 		height:100%;
+ 		opacity:0.9;
+ 	}
+ </style>
+ </head>
+<body>
+ <canvas id="canvas"></canvas>
+ 
+ <script type="text/javascript">
+ 	var mycanvas=document.getElementById('canvas');
+    var cxt=mycanvas.getContext("2d");
+	function circle(){
+ 		this.x=(Math.random()+1)*100;
+ 		this.y=50;
+ 		this.r=(Math.random()+2)*10;
+ 		this.a=Math.floor(Math.random()*256);
+ 		this.b=Math.floor(Math.random()*256);
+ 		this.c=Math.floor(Math.random()*256);
+ 		this.paint=function(){
+ 			cxt.fillStyle="rgb("+this.a+","+this.b+","+this.c+")";
+ 			cxt.beginPath();
+ 			cxt.arc(this.x,this.y,this.r,0,Math.PI*2);
+ 			cxt.closePath();
+ 			cxt.fill();
+ 		};
+ 		this.step=function(){
+			this.y++;
+ 		};
+ 	 }
+	 	var img=new Image();
+	 	img.src="img/1.jpeg";
+	    var circlesall=[];
+		function createcircle(){
+	 		var circles=new circle();
+	 		circles.paint();
+	 		circlesall.push(circles);
+	 	}
+	 	function paintcircle(){
+	 		for(var i=0;i<circlesall.length;i++){
+	 			circlesall[i].paint();
+	 		}
+	 	}
+	 	function stepcircle(){
+	 		for(var i=0;i<circlesall.length;i++){
+	 			circlesall[i].step();
+	 		}
+	 	}
+	 	var time=0;
+	 	var loop=setInterval(function(){
+	 		time++;
+	 		if(time%10==0)
+	 			createcircle();
+	 		cxt.drawImage(img,0,0);
+	 		paintcircle();
+	 		stepcircle();
+	 	},50);
+	 
+	</script>
+ </body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>canvas气泡</title>
+	<style>
+		#mycanvas{
+			position:absolute;
+			width:100%;
+			height:100%;
+			border:1px solid yellow;
+		}
+	</style>
+
+</head>
+<body>
+
+<canvas id="mycanvas"></canvas>
+<!--<script src="main.js"></script>-->
+	<script>
+		var canvas=document.getElementById("mycanvas");//获取<canvas>元素
+		var context=canvas.getContext("2d");//创建画布对象
+		//创建构造函数Circle
+		function Circle()
+		{
+			this.x=Math.random()*200;//在画布内随机生成x值
+            //随机生成三原色
+			this.r1 = Math.floor(Math.random()*256);
+			this.g = Math.floor(Math.random()*256);
+			this.b = Math.floor(Math.random()*256);
+			this.y=30;
+			this.r=Math.random()*14;//随机半径r
+            // 绘制圆形的方法
+			this.paint=function(){
+				context.beginPath();
+				context.globalAlpha = 0.8;//设置透明度
+				context.fillStyle="rgb("+this.r1+","+this.g+","+this.b+")";//将随机生成的三原色设为圆形的颜色
+				context.arc(this.x,this.y,this.r,0,Math.PI*2);//绘制圆形
+				context.closePath();
+				context.fill();
+			};
+           // 控制圆形移动的方法
+			this.step=function()
+			{
+				this.y++;
+			}
+		}
+		var circles=[];
+		// 创建圆形对象
+		function createCircles()
+		{
+			var circle=new Circle();//调用构造函数
+			console.log("长度为："+circles.length);
+			circles.push(circle);//将绘制的图形追加到数组
+			console.log("长度为："+circles.length);
+		}
+		// 绘制所有圆形
+		function paintCircles(){
+
+			for(var i=0;i<circles.length;i++)
+			{
+				circles[i].paint();
+				console.log("绘制："+i);//遍历数组，将数组内的图形绘制
+			}
+
+		}
+		// 控制所有圆形运动
+		function stepCircles(){
+			for(var i=0;i<circles.length;i++){
+				circles[i].step();			
+        }
+		}
+		//绘制一张图片
+		 var myimg=new Image();
+		 myimg.src="img/1.jpeg";
+
+
+		//
+		var time=0;
+		// //设置定时器
+		var loop=setInterval(
+			function()
+			{
+			context.drawImage(myimg,0,0,300,150);
+			time++;//控制绘制时间
+			if(time%20==0)
+			{
+				createCircles();
+				 paintCircles();
+				stepCircles();
+			}
+//		 	paintCircles();
+//		 	stepCircles();
+		},50);
+	</script>
+</body>
+</html> 
