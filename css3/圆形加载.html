@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+	    .circle{
+	    width:100px;
+		height:100px;
+		position: absolute;
+		top:50%;
+		left:50%;
+		border:10px solid #DCDCDC;
+		border-radius:50%;
+		margin: -50px 0 0 -50px;
+	    }
+		.img{
+		width:100px;
+		height:100px;
+		position: relative;
+		border:10px solid purple;
+		left: -10px;
+		top:-10px;
+		border-color:purple transparent transparent transparent;
+		border-radius:50%;
+		animation:circle 5s infinite linear;/*匀速 循环*/
+		}
+		@keyframes circle{
+		0%{ transform:rotate(0deg); }
+		100%{ transform:rotate(-360deg); }
+		}
+		</style>
+	</head>
+	<body>
+		<div class="circle">
+			<div class="img"></div>
+		</div>
+		
+	</body>
+</html>

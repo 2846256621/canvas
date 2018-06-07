@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>卡片</title>
+	<style type="text/css"> 
+	.div
+	{
+		width:22%;
+		height:290px;
+		background-color: white;
+	    box-shadow:0 0px 8px 0 rgba(0,0,0,0.5) ,0 8px 20px 0 rgba(0,0,0,0.5);
+	    margin-bottom: 5px;
+	    border-radius:4px;
+	
+	}
+	.container{
+		text-align: center;
+		padding: 3px ;
+		
+	}
+	a{
+		display:inline-block;
+		border:1px solid deepskyblue;
+		border-radius: 6px;
+		padding:5px;	
+		transition: 0.3s;
+	}
+	a:hover{
+	
+		box-shadow: 0 0 2px 1px ragb(0 ,150px,150px,1);
+	}
+	@keyframes we{
+		from{background-color: #00BFFF;}
+		to{background-color: aquamarine;}
+	}
+	
+	.animation{
+		-webkit-animation:we 5s;
+		width: 200px;
+		height: 100px;
+		animation-delay: 2s;
+		animation-duration: initial;
+		animation-direction: alternate;
+	}
+	</style>
+	</head>
+	<body style="margin: 25px;">
+	<div class="div">
+		<img src="img/5DE6CB8DCE5222A639682DA54DC38E77.jpg" alt="we" width="100%" height="200px" style="opacity:0.5;" />
+		<div class="container">
+			<p>我们的故事不多，但遇见你就是最好的</p>
+		</div>
+	</div>
+	
+	<div>
+		<a  target="_blank" href="dong.html">
+			<img src="img/QQ图片20180420185542.jpg" width="200px" height="200px"/>
+		</a>
+	</div>
+	<div>
+	  <img src="img/QQ图片20180420185542.jpg" width="100px" height="100px" style="border-radius: 50%;"/>
+	</div>
+	<div class="animation"></div>
+	</body>
+</html>

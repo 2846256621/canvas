@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>图片旋转</title>
+		<style type="text/css">
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			div img {
+				width: 200px;
+				height: 150px;
+				position: absolute;
+			}
+			#div{
+				position: absolute;
+				width:200px;
+				height:150px;
+				top:50%;
+				left: 50%;
+				margin: 200px auto;
+				
+				transform-style : preserve-3d ;
+				transition: all .5s ease;
+				animation: strats 30s infinite linear;
+			}
+			#angle{
+				perspective: 1000px;
+			}
+			@keyframes strats{
+				0% {
+					transform: rotateY(0);
+					}
+				100%{
+					transform: rotateY(360deg);
+					}
+			}
+		</style>
+	</head>
+	<body>
+		<div id="angle">
+			<div id="div">
+				<img src="img/22.jpg" alt=""/>
+				<img src="img/23.jpg" alt=""/>
+				<img src="img/24.jpg" alt=""/>
+				<img src="img/25.jpg" alt=""/>
+				<img src="img/26.jpg" alt=""/>
+				<img src="img/27.jpg" alt=""/>
+				<img src="img/28.jpg" alt=""/>
+				<img src="img/29.jpg" alt=""/>
+			</div>
+		</div>
+		<script type="text/javascript">
+			var divArr=document.getElementById("div").getElementsByTagName("img");
+			var every=Math.floor(360/divArr.length);
+			for(var i=0;i<divArr.length;i++)
+			{
+				divArr[i].style.transform = 'rotateY('+ every*i +'deg) translateZ(300px)';
+			}
+		</script>
+	</body>
+</html>
